@@ -1,0 +1,14 @@
+name: My Python Checker
+on: [push]
+jobs:
+  check-logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Run Test
+        run: |
+          python -c "from converter import convert_usd_to_inr; assert convert_usd_to_inr(2) == 166"
